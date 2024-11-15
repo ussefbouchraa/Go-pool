@@ -2,6 +2,9 @@ package piscine
 
 func Capitalize(s string) string {
 
+	if len(s) == 0{
+		return ""
+	}
 	bytes := []byte(s)
 
 	for i := 0; i < len(bytes); i++ {

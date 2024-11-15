@@ -1,7 +1,7 @@
 package piscine
 
 func Join(strs []string, sep string) string {
-	if strs == nil {
+	if strs == nil || len(sep) == 0 {
 		return ""
 	}
 	var res string
