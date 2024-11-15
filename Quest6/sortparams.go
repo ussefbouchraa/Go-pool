@@ -1,24 +1,29 @@
 package main
-
 import (
-	"fmt"
 	"os"
-	"path/filepath"
+	"github.com/01-edu/z01"
 )
-
-func main(){
-
-	// for i := 1; i < len(os.Args); i++{
-			for j:=  1 ; j < len(os.Args)  ; j++{
-				if( len(os.Args) > j + 1 && (os.Args[j]) > (os.Args[j + 1]) ){
-					tmp := os.Args[j]
-					os.Args[j] = os.Args[j + 1]
-					os.Args[j+1] = tmp
-
-				}
-			// }
-	}
-		for i := 1; i < len(os.Args); i++{
-		fmt.Println(filepath.Base(os.Args[i]))
+func printArg(arg string) {
+	for _, val := range arg {
+		if val == '.' || val == '/' {
+			continue
 		}
+		z01.PrintRune(val)
+	}
+	z01.PrintRune('\n')
+}
+func main() {
+	args := os.Args[1:]
+	for i := 0; i < len(args); i++ {
+		for j := i + 1; j < len(args); j++ {
+			if args[i] > args[j] {
+				tmp := args[i]
+				args[i] = args[j]
+				args[j] = tmp
+			}
+		}
+	}
+	for i := 0; i < len(args); i++ {
+		printArg(args[i])
+	}
 }
